@@ -1,0 +1,33 @@
+#it inputs the type which is text and has an id of txt-price/quantity with Enter placeholder
+#has a calculate bottom and the output of the user choice
+
+<input type="text" id="txt-price" placeholder="Enter the price of the item">
+<input type="text" id="txt-quantity" placeholder="Enter the quanity of the item">
+<button id="btn-submit">Calculate</button>
+<div id="output"></div>
+
+#the user input method that keeps track of user input
+
+<script>
+  var priceInput = document.getElementById('txt-price');
+  var quantityInput = document.getElementById('txt-quantity');
+  var submitBtn = document.getElementById('btn-submit');
+  var output = document.getElementById('output');
+
+#user enters invalid number it outputs invalid
+#totalprice is price * quantity and outputs the text item at $price each is $price
+
+  submitBtn.addEventListener('click', function () {
+    var price = priceInput.value;
+    var quanity = quantityInput.value;
+    price = +price;
+    quanity = +quanity;
+    if (Number.isNaN(price) || Number.isNaN(quanity)) {
+      output.innerHTML = 'Invalid input';
+      return;
+    }
+    var totalPrice = price * quanity;
+    totalPrice = Math.round(totalPrice * 100) / 100;
+    output.innerHTML = quanity + ' items at $' + price + ' each is $' + totalPrice;
+  });
+</script>
